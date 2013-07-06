@@ -71,7 +71,7 @@ to your project's `composer.json` file:
 ``` javascript
 {
     "require": {
-        "rhumsaa/array_column": "~1.0.0"
+        "rhumsaa/array_column": "~1.1"
     }
 }
 ```
