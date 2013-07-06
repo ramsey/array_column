@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ramsey/array_column.png)](https://travis-ci.org/ramsey/array_column)
 
-This simple library provides functionality for [`array_column()`](https://wiki.php.net/rfc/array_column)
+This simple library provides functionality for [`array_column()`](http://php.net/array_column)
 to versions of PHP earlier than 5.5. It mimics the functionality of the built-in
 function in every way.
 
