@@ -35,10 +35,10 @@ if (!function_exists('array_column')) {
         // does in PHP 5.5.
         $params = func_get_args();
 
-        if (!isset($params[0])) {
+        if (!array_key_exists(0, $params)) {
             trigger_error('array_column() expects at least 2 parameters, 0 given', E_USER_WARNING);
             return null;
-        } elseif (!isset($params[1])) {
+        } elseif (!array_key_exists(1, $params)) {
             trigger_error('array_column() expects at least 2 parameters, 1 given', E_USER_WARNING);
             return null;
         }
@@ -49,7 +49,9 @@ if (!function_exists('array_column')) {
         }
 
         if (!is_int($params[1])
+            && !is_float($params[1])
             && !is_string($params[1])
+            && $params[1] !== null
             && !(is_object($params[1]) && method_exists($params[1], '__toString'))
         ) {
             trigger_error('array_column(): The column key should be either a string or an integer', E_USER_WARNING);
@@ -58,6 +60,7 @@ if (!function_exists('array_column')) {
 
         if (isset($params[2])
             && !is_int($params[2])
+            && !is_float($params[2])
             && !is_string($params[2])
             && !(is_object($params[2]) && method_exists($params[2], '__toString'))
         ) {
@@ -66,8 +69,17 @@ if (!function_exists('array_column')) {
         }
 
         $paramsInput = $params[0];
-        $paramsColumnKey = (string) $params[1];
-        $paramsIndexKey = (isset($params[2]) ? (string) $params[2] : null);
+        $paramsColumnKey = ($params[1] !== null) ? (string) $params[1] : null;
+
+        $paramsIndexKey = null;
+        if (isset($params[2])) {
+            if (is_float($params[2]) || is_int($params[2])) {
+                $paramsIndexKey = (int) $params[2];
+            } else {
+                $paramsIndexKey = (string) $params[2];
+            }
+        }
+
         $resultArray = array();
 
         foreach ($paramsInput as $row) {
@@ -77,10 +89,13 @@ if (!function_exists('array_column')) {
 
             if ($paramsIndexKey !== null && array_key_exists($paramsIndexKey, $row)) {
                 $keySet = true;
-                $key = $row[$paramsIndexKey];
+                $key = (string) $row[$paramsIndexKey];
             }
 
-            if (is_array($row) && array_key_exists($paramsColumnKey, $row)) {
+            if ($paramsColumnKey === null) {
+                $valueSet = true;
+                $value = $row;
+            } elseif (is_array($row) && array_key_exists($paramsColumnKey, $row)) {
                 $valueSet = true;
                 $value = $row[$paramsColumnKey];
             }
