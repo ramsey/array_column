@@ -33,13 +33,12 @@ if (!function_exists('array_column')) {
         // Using func_get_args() in order to check for proper number of
         // parameters and trigger errors exactly as the built-in array_column()
         // does in PHP 5.5.
+        $argc = func_num_args();
+        
         $params = func_get_args();
 
-        if (!array_key_exists(0, $params)) {
-            trigger_error('array_column() expects at least 2 parameters, 0 given', E_USER_WARNING);
-            return null;
-        } elseif (!array_key_exists(1, $params)) {
-            trigger_error('array_column() expects at least 2 parameters, 1 given', E_USER_WARNING);
+        if ($argc < 2) {
+        	trigger_error("array_column() expects at least 2 parameters, {$argc} given", E_USER_WARNING);
             return null;
         }
 
