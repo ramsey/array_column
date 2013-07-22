@@ -39,6 +39,7 @@ if (!function_exists('array_column')) {
 
         if ($argc < 2) {
         	trigger_error("array_column() expects at least 2 parameters, {$argc} given", E_USER_WARNING);
+            return null;
         }
 
         if (!is_array($params[0])) {
