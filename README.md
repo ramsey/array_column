@@ -1,6 +1,9 @@
 # array_column() for PHP
 
 [![Build Status](https://travis-ci.org/ramsey/array_column.png)](https://travis-ci.org/ramsey/array_column)
+[![Latest Stable Version](https://poser.pugx.org/rhumsaa/array_column/v/stable.png)](https://packagist.org/packages/rhumsaa/array_column)
+[![Latest Unstable Version](https://poser.pugx.org/rhumsaa/array_column/v/unstable.png)](https://packagist.org/packages/rhumsaa/array_column)
+[![Total Downloads](https://poser.pugx.org/rhumsaa/array_column/downloads.png)](https://packagist.org/packages/rhumsaa/array_column)
 
 This simple library provides functionality for [`array_column()`](http://php.net/array_column)
 to versions of PHP earlier than 5.5. It mimics the functionality of the built-in
