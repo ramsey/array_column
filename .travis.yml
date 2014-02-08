@@ -4,5 +4,9 @@ php:
   - 5.3
   - 5.4
   - 5.5
+  - hhvm
 
-script: phpunit
+before_script:
+  - composer install --dev --prefer-source
+
+script: ./vendor/bin/phpunit --coverage-text
