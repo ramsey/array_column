@@ -5,12 +5,11 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @copyright Copyright (c) 2013 Ben Ramsey <http://benramsey.com>
+ * @copyright Copyright (c) Ben Ramsey (http://benramsey.com)
  * @license http://opensource.org/licenses/MIT MIT
  */
 
 if (!function_exists('array_column')) {
-
     /**
      * Returns the values from a single column of the input array, identified by
      * the $columnKey.
@@ -42,7 +41,10 @@ if (!function_exists('array_column')) {
         }
 
         if (!is_array($params[0])) {
-            trigger_error('array_column() expects parameter 1 to be array, ' . gettype($params[0]) . ' given', E_USER_WARNING);
+            trigger_error(
+                'array_column() expects parameter 1 to be array, ' . gettype($params[0]) . ' given',
+                E_USER_WARNING
+            );
             return null;
         }
 
@@ -81,7 +83,6 @@ if (!function_exists('array_column')) {
         $resultArray = array();
 
         foreach ($paramsInput as $row) {
-
             $key = $value = null;
             $keySet = $valueSet = false;
 

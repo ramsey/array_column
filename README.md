@@ -1,11 +1,11 @@
 # array_column() for PHP
 
-[![Build Status](https://travis-ci.org/ramsey/array_column.png)](https://travis-ci.org/ramsey/array_column)
-[![Coverage Status](https://coveralls.io/repos/ramsey/array_column/badge.png)](https://coveralls.io/r/ramsey/array_column)
-[![Latest Stable Version](https://poser.pugx.org/rhumsaa/array_column/v/stable.png)](https://packagist.org/packages/rhumsaa/array_column)
-[![Latest Unstable Version](https://poser.pugx.org/rhumsaa/array_column/v/unstable.png)](https://packagist.org/packages/rhumsaa/array_column)
-[![Total Downloads](https://poser.pugx.org/rhumsaa/array_column/downloads.png)](https://packagist.org/packages/rhumsaa/array_column)
-[![HHVM Status](http://hhvm.h4cc.de/badge/rhumsaa/array_column.png)](http://hhvm.h4cc.de/package/rhumsaa/array_column)
+[![Build Status](https://travis-ci.org/ramsey/array_column.svg?branch=master)](https://travis-ci.org/ramsey/array_column)
+[![Coverage Status](https://coveralls.io/repos/ramsey/array_column/badge.svg?branch=master)](https://coveralls.io/r/ramsey/array_column)
+[![Latest Stable Version](https://poser.pugx.org/ramsey/array_column/v/stable.svg)](https://packagist.org/packages/ramsey/array_column)
+[![Total Downloads](https://poser.pugx.org/ramsey/array_column/downloads.svg)](https://packagist.org/packages/ramsey/array_column)
+[![Latest Unstable Version](https://poser.pugx.org/ramsey/array_column/v/unstable.svg)](https://packagist.org/packages/ramsey/array_column)
+[![License](https://poser.pugx.org/ramsey/array_column/license.svg)](https://packagist.org/packages/ramsey/array_column)
 
 This simple library provides functionality for [`array_column()`](http://php.net/array_column)
 to versions of PHP earlier than 5.5. It mimics the functionality of the built-in
@@ -70,15 +70,10 @@ Array
 
 ## Installation
 
-The easiest way to install this library is to use Composer and add the following
-to your project's `composer.json` file:
+The easiest way to install this library is to use [Composer](https://getcomposer.org/):
 
-``` javascript
-{
-    "require": {
-        "rhumsaa/array_column": "~1.1"
-    }
-}
+```
+php composer.phar require ramsey/array_column
 ```
 
 Then, when you run `composer install`, everything will fall magically into place,
