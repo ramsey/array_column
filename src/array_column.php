@@ -27,7 +27,7 @@ if (!function_exists('array_column')) {
      *                        of the column, or it may be the string key name.
      * @return array
      */
-    function array_column($input = null, $columnKey = null, $indexKey = null)
+    function array_column(array $input = null, $columnKey = null, $indexKey = null)
     {
         // Using func_get_args() in order to check for proper number of
         // parameters and trigger errors exactly as the built-in array_column()
@@ -37,14 +37,6 @@ if (!function_exists('array_column')) {
 
         if ($argc < 2) {
             trigger_error("array_column() expects at least 2 parameters, {$argc} given", E_USER_WARNING);
-            return null;
-        }
-
-        if (!is_array($params[0])) {
-            trigger_error(
-                'array_column() expects parameter 1 to be array, ' . gettype($params[0]) . ' given',
-                E_USER_WARNING
-            );
             return null;
         }
 
