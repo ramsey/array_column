@@ -105,7 +105,7 @@ if (!function_exists('array_column')) {
                 }
 
             }
-        } else if ($paramsIndexKey !== null) {
+        } elseif ($paramsIndexKey !== null) {
             foreach ($paramsInput as $row) {
                 $value = $row;
                 $key = null;
@@ -122,7 +122,7 @@ if (!function_exists('array_column')) {
                     $resultArray[] = $value;
                 }
             }
-        } else { // column key is set but index key is null
+        } elseif ($paramsColumnKey !== null) {
             foreach ($paramsInput as $row) {
                 $value = null;
                 $valueSet = false;
@@ -136,6 +136,8 @@ if (!function_exists('array_column')) {
                     $resultArray[] = $value;
                 }
             }
+        } else { // both index key and column key are null
+            $resultArray = array_values($paramsInput);
         }
 
         return $resultArray;
