@@ -82,31 +82,62 @@ if (!function_exists('array_column')) {
 
         $resultArray = array();
 
-        foreach ($paramsInput as $row) {
-            $key = $value = null;
-            $keySet = $valueSet = false;
+        if ($paramsIndexKey !== null && $paramsColumnKey !== null) {
+            foreach ($paramsInput as $row) {
+                $key = $value = null;
+                $keySet = $valueSet = false;
 
-            if ($paramsIndexKey !== null && array_key_exists($paramsIndexKey, $row)) {
-                $keySet = true;
-                $key = (string) $row[$paramsIndexKey];
+                if (array_key_exists($paramsIndexKey, $row)) {
+                    $keySet = true;
+                    $key = (string) $row[$paramsIndexKey];
+                }
+                if (is_array($row) && array_key_exists($paramsColumnKey, $row)) {
+                    $valueSet = true;
+                    $value = $row[$paramsColumnKey];
+                }
+
+                if ($valueSet) {
+                    if ($keySet) {
+                        $resultArray[$key] = $value;
+                    } else {
+                        $resultArray[] = $value;
+                    }
+                }
+
             }
-
-            if ($paramsColumnKey === null) {
-                $valueSet = true;
+        } elseif ($paramsIndexKey !== null) {
+            foreach ($paramsInput as $row) {
                 $value = $row;
-            } elseif (is_array($row) && array_key_exists($paramsColumnKey, $row)) {
-                $valueSet = true;
-                $value = $row[$paramsColumnKey];
-            }
+                $key = null;
+                $keySet = false;
 
-            if ($valueSet) {
+                if (array_key_exists($paramsIndexKey, $row)) {
+                    $keySet = true;
+                    $key = (string) $row[$paramsIndexKey];
+                }
+
                 if ($keySet) {
                     $resultArray[$key] = $value;
                 } else {
                     $resultArray[] = $value;
                 }
             }
+        } elseif ($paramsColumnKey !== null) {
+            foreach ($paramsInput as $row) {
+                $value = null;
+                $valueSet = false;
 
+                if (is_array($row) && array_key_exists($paramsColumnKey, $row)) {
+                    $valueSet = true;
+                    $value = $row[$paramsColumnKey];
+                }
+
+                if ($valueSet) {
+                    $resultArray[] = $value;
+                }
+            }
+        } else { // both index key and column key are null
+            $resultArray = array_values($paramsInput);
         }
 
         return $resultArray;
